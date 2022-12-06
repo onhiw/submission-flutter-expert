@@ -8,6 +8,7 @@ import 'package:ditonton/presentation/pages/movie-page/search_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/home_tv_page.dart';
+import 'package:ditonton/presentation/pages/tv-page/now_playing_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/search_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/top_rated_tv_page.dart';
@@ -28,6 +29,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
+
+import 'presentation/provider/tv-series/now_playing_tv_notifier.dart';
 
 void main() {
   di.init();
@@ -73,6 +76,9 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<PopularTvNotifier>(),
         ),
         ChangeNotifierProvider(
+          create: (_) => di.locator<NowPlayingTvNotifier>(),
+        ),
+        ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistTvNotifier>(),
         ),
       ],
@@ -91,6 +97,8 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeTvPage());
+            case NowPlayingTvPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => NowPlayingTvPage());
             case PopularTvPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => PopularTvPage());
             case TopRatedTvPage.ROUTE_NAME:

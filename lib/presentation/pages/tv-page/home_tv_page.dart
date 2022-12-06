@@ -4,6 +4,7 @@ import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/watchlist_movies_page.dart';
+import 'package:ditonton/presentation/pages/tv-page/now_playing_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/search_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/top_rated_tv_page.dart';
@@ -91,9 +92,10 @@ class _HomeTvPageState extends State<HomeTvPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'Now Playing',
+                onTap: () =>
+                    Navigator.pushNamed(context, NowPlayingTvPage.ROUTE_NAME),
               ),
               Consumer<TvListNotifier>(builder: (context, data, child) {
                 final state = data.nowPlayingState;
