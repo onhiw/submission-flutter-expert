@@ -16,7 +16,7 @@ abstract class TvRemoteDataSource {
 }
 
 class TvRemoteDataSourceImpl implements TvRemoteDataSource {
-  static const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';
+  static const API_KEY = 'api_key=649e404ce6be0ff17ed34d89c1b6e5f7';
   static const BASE_URL = 'https://api.themoviedb.org/3';
 
   final http.Client client;
