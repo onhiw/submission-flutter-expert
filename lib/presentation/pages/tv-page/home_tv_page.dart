@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/presentation/bloc/tv-series/now-playing-tv/now_playing_tv_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv-series/popular-tv/popular_tv_bloc.dart';
+import 'package:ditonton/presentation/bloc/tv-series/top-rated-tv/top_rated_tv_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/movie-page/watchlist_movies_page.dart';
@@ -9,9 +11,8 @@ import 'package:ditonton/presentation/pages/tv-page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/search_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/top_rated_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv-page/tv_detail_page.dart';
-import 'package:ditonton/presentation/provider/tv-series/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ditonton/common/constants.dart';
 
 class HomeTvPage extends StatefulWidget {
@@ -24,10 +25,11 @@ class HomeTvPage extends StatefulWidget {
 class _HomeTvPageState extends State<HomeTvPage> {
   @override
   void initState() {
-    Future.microtask(() => Provider.of<TvListNotifier>(context, listen: false)
-      ..fetchNowPlayingTv()
-      ..fetchPopularTv()
-      ..fetchTopRatedTv());
+    Future.microtask(() {
+      context.read<NowPlayingTvBloc>().add(GetListNowPlayingTv());
+      context.read<PopularTvBloc>().add(GetListPopularTv());
+      context.read<TopRatedTvBloc>().add(GetListTopRatedTv());
+    });
     super.initState();
   }
 
@@ -97,16 +99,16 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 onTap: () =>
                     Navigator.pushNamed(context, NowPlayingTvPage.ROUTE_NAME),
               ),
-              Consumer<TvListNotifier>(builder: (context, data, child) {
-                final state = data.nowPlayingState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return TvList(data.nowPlayingTv);
+              BlocBuilder<NowPlayingTvBloc, NowPlayingTvState>(
+                  builder: (context, state) {
+                if (state is NowPlayingTvLoading) {
+                  return Center(child: const CircularProgressIndicator());
+                } else if (state is NowPlayingTvLoaded) {
+                  return TvList(state.tv);
+                } else if (state is NowPlayingTvError) {
+                  return const Text("Terjadi kesalahaan saat memuat data");
                 } else {
-                  return Text('Failed');
+                  return Container();
                 }
               }),
               _buildSubHeading(
@@ -114,16 +116,16 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 onTap: () =>
                     Navigator.pushNamed(context, PopularTvPage.ROUTE_NAME),
               ),
-              Consumer<TvListNotifier>(builder: (context, data, child) {
-                final state = data.popularTvState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return TvList(data.popularTv);
+              BlocBuilder<PopularTvBloc, PopularTvState>(
+                  builder: (context, state) {
+                if (state is PopularTvLoading) {
+                  return Center(child: const CircularProgressIndicator());
+                } else if (state is PopularTvLoaded) {
+                  return TvList(state.tv);
+                } else if (state is PopularTvError) {
+                  return const Text("Terjadi kesalahaan saat memuat data");
                 } else {
-                  return Text('Failed');
+                  return Container();
                 }
               }),
               _buildSubHeading(
@@ -131,16 +133,16 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 onTap: () =>
                     Navigator.pushNamed(context, TopRatedTvPage.ROUTE_NAME),
               ),
-              Consumer<TvListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedTvState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return TvList(data.topRatedTv);
+              BlocBuilder<TopRatedTvBloc, TopRatedTvState>(
+                  builder: (context, state) {
+                if (state is TopRatedTvLoading) {
+                  return Center(child: const CircularProgressIndicator());
+                } else if (state is TopRatedTvLoaded) {
+                  return TvList(state.tv);
+                } else if (state is TopRatedTvError) {
+                  return const Text("Terjadi kesalahaan saat memuat data");
                 } else {
-                  return Text('Failed');
+                  return Container();
                 }
               }),
             ],
