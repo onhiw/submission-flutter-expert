@@ -1,3 +1,4 @@
+import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/bloc/movie/movie_watchlist/movie_watchlist_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv-series/tv_watchlist/tv_watchlist_bloc.dart';
@@ -59,6 +60,12 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                   builder: (context, state) {
                 if (state is TvWatchlistLoading) {
                   return Center(child: const CircularProgressIndicator());
+                } else if (state is TvWatchlistInitial) {
+                  return Center(
+                      child: Text(
+                    'Belum ada data',
+                    style: kHeading6,
+                  ));
                 } else if (state is TvWatchlistLoaded) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
@@ -80,6 +87,12 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                   builder: (context, state) {
                 if (state is MovieWatchlistLoading) {
                   return Center(child: const CircularProgressIndicator());
+                } else if (state is MovieWatchlistInitial) {
+                  return Center(
+                      child: Text(
+                    'Belum ada data',
+                    style: kHeading6,
+                  ));
                 } else if (state is MovieWatchlistLoaded) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
