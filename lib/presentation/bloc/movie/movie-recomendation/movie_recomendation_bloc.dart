@@ -12,9 +12,7 @@ class MovieRecomendationBloc
 
   MovieRecomendationBloc(this.getMovieRecommendations)
       : super(MovieRecomendationInitial()) {
-    on<MovieRecomendationEvent>((event, emit) {
-      on<GetListMovieRecomendation>(_fetchMovieRecomendation);
-    });
+    on<GetListMovieRecomendation>(_fetchMovieRecomendation);
   }
 
   Future<void> _fetchMovieRecomendation(GetListMovieRecomendation event,

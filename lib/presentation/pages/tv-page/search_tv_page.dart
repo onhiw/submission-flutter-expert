@@ -38,12 +38,14 @@ class SearchTvPage extends StatelessWidget {
               if (state is TvSearchLoading) {
                 return Center(child: const CircularProgressIndicator());
               } else if (state is TvSearchLoaded) {
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    final tv = state.tv[index];
-                    return TvCard(tv);
-                  },
-                  itemCount: state.tv.length,
+                return Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      final tv = state.tv[index];
+                      return TvCard(tv);
+                    },
+                    itemCount: state.tv.length,
+                  ),
                 );
               } else if (state is TvSearchError) {
                 return const Text("Terjadi kesalahaan saat memuat data");

@@ -18,12 +18,10 @@ class TvWatchlistBloc extends Bloc<TvWatchlistEvent, TvWatchlistState> {
   TvWatchlistBloc(this.getWatchlistTv, this.getWatchListTvStatus,
       this.saveWatchlistTv, this.removeWatchlistTv)
       : super(TvWatchlistInitial()) {
-    on<TvWatchlistEvent>((event, emit) {
-      on<GetListTvWatchlist>(_fetchTvWatchlist);
-      on<GetListTvWatchlistStatus>(_fetchTvWatchlistStatus);
-      on<TvWatchlistAdd>(_fetchTvWatchlistAdd);
-      on<TvWatchlistRemove>(_fetchTvWatchlistRemove);
-    });
+    on<GetListTvWatchlist>(_fetchTvWatchlist);
+    on<GetListTvWatchlistStatus>(_fetchTvWatchlistStatus);
+    on<TvWatchlistAdd>(_fetchTvWatchlistAdd);
+    on<TvWatchlistRemove>(_fetchTvWatchlistRemove);
   }
 
   Future<void> _fetchTvWatchlist(

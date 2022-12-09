@@ -10,9 +10,7 @@ class DetailTvBloc extends Bloc<DetailTvEvent, DetailTvState> {
   final GetTvDetail getTvDetail;
 
   DetailTvBloc(this.getTvDetail) : super(DetailTvInitial()) {
-    on<DetailTvEvent>((event, emit) {
-      on<GetSingleDetailTv>(_fetchDetailTv);
-    });
+    on<GetSingleDetailTv>(_fetchDetailTv);
   }
 
   Future<void> _fetchDetailTv(

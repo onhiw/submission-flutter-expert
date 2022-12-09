@@ -10,9 +10,7 @@ class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {
   final GetMovieDetail getMovieDetail;
 
   DetailMovieBloc(this.getMovieDetail) : super(DetailMovieInitial()) {
-    on<DetailMovieEvent>((event, emit) {
-      on<GetSingleDetailMovie>(_fetchDetailMovie);
-    });
+    on<GetSingleDetailMovie>(_fetchDetailMovie);
   }
 
   Future<void> _fetchDetailMovie(

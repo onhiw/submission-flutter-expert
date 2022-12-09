@@ -10,9 +10,7 @@ class NowPlayingTvBloc extends Bloc<NowPlayingTvEvent, NowPlayingTvState> {
   final GetNowPlayingTv getNowPlayingTv;
 
   NowPlayingTvBloc(this.getNowPlayingTv) : super(NowPlayingTvInitial()) {
-    on<NowPlayingTvEvent>((event, emit) {
-      on<GetListNowPlayingTv>(_fetchNowPlayingTv);
-    });
+    on<GetListNowPlayingTv>(_fetchNowPlayingTv);
   }
 
   Future<void> _fetchNowPlayingTv(

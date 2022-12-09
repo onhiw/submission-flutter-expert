@@ -11,9 +11,7 @@ class TvRecomendationBloc
   final GetTvRecommendations getTvRecommendations;
   TvRecomendationBloc(this.getTvRecommendations)
       : super(TvRecomendationInitial()) {
-    on<TvRecomendationEvent>((event, emit) {
-      on<GetListTvRecomendation>(_fetchTvRecomendation);
-    });
+    on<GetListTvRecomendation>(_fetchTvRecomendation);
   }
 
   Future<void> _fetchTvRecomendation(

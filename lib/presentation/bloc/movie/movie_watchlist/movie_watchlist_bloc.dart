@@ -19,12 +19,10 @@ class MovieWatchlistBloc
   MovieWatchlistBloc(this.getWatchlistMovies, this.getWatchListStatus,
       this.saveWatchlist, this.removeWatchlist)
       : super(MovieWatchlistInitial()) {
-    on<MovieWatchlistEvent>((event, emit) {
-      on<GetListMovieWatchlist>(_fetchMovieWatchlist);
-      on<GetListMovieWatchlistStatus>(_fetchMovieWatchlistStatus);
-      on<MovieWatchlistAdd>(_fetchMovieWatchlistAdd);
-      on<MovieWatchlistRemove>(_fetchMovieWatchlistRemove);
-    });
+    on<GetListMovieWatchlist>(_fetchMovieWatchlist);
+    on<GetListMovieWatchlistStatus>(_fetchMovieWatchlistStatus);
+    on<MovieWatchlistAdd>(_fetchMovieWatchlistAdd);
+    on<MovieWatchlistRemove>(_fetchMovieWatchlistRemove);
   }
 
   Future<void> _fetchMovieWatchlist(

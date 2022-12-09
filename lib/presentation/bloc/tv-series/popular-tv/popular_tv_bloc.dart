@@ -10,9 +10,7 @@ class PopularTvBloc extends Bloc<PopularTvEvent, PopularTvState> {
   final GetPopularTv getPopularTv;
 
   PopularTvBloc(this.getPopularTv) : super(PopularTvInitial()) {
-    on<PopularTvEvent>((event, emit) {
-      on<GetListPopularTv>(_fetchPopularTv);
-    });
+    on<GetListPopularTv>(_fetchPopularTv);
   }
 
   Future<void> _fetchPopularTv(

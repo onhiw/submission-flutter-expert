@@ -10,9 +10,7 @@ class NowPlayingBloc extends Bloc<NowPlayingEvent, NowPlayingState> {
   final GetNowPlayingMovies getNowPlayingMovies;
 
   NowPlayingBloc(this.getNowPlayingMovies) : super(NowPlayingInitial()) {
-    on<NowPlayingEvent>((event, emit) {
-      on<GetListNowPlayingMovie>(_fetchNowPlayingMovie);
-    });
+    on<GetListNowPlayingMovie>(_fetchNowPlayingMovie);
   }
 
   Future<void> _fetchNowPlayingMovie(

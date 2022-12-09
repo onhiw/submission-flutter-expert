@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final tTvModel = TvModel(
       backdropPath: 'backdropPath',
-      firstAirDate: 'firstAirDate',
       genreIds: [1, 2, 3],
       id: 1,
       name: 'name',
@@ -20,7 +19,6 @@ void main() {
 
   final tTv = Tv(
       backdropPath: 'backdropPath',
-      firstAirDate: 'firstAirDate',
       genreIds: [1, 2, 3],
       id: 1,
       name: 'name',

@@ -10,9 +10,7 @@ class TvSearchBloc extends Bloc<TvSearchEvent, TvSearchState> {
   final SearchTv searchTv;
 
   TvSearchBloc(this.searchTv) : super(TvSearchInitial()) {
-    on<TvSearchEvent>((event, emit) {
-      on<GetListSearchTv>(_fetchTvSearch);
-    });
+    on<GetListSearchTv>(_fetchTvSearch);
   }
 
   Future<void> _fetchTvSearch(

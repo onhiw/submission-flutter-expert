@@ -10,9 +10,7 @@ class TopRatedTvBloc extends Bloc<TopRatedTvEvent, TopRatedTvState> {
   final GetTopRatedTv getTopRatedTv;
 
   TopRatedTvBloc(this.getTopRatedTv) : super(TopRatedTvInitial()) {
-    on<TopRatedTvEvent>((event, emit) {
-      on<GetListTopRatedTv>(_fetchTopRatedTv);
-    });
+    on<GetListTopRatedTv>(_fetchTopRatedTv);
   }
 
   Future<void> _fetchTopRatedTv(

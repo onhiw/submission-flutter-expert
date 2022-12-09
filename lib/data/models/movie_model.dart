@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 class MovieModel extends Equatable {
   MovieModel({
     required this.adult,
-    required this.backdropPath,
+    this.backdropPath,
     required this.genreIds,
     required this.id,
     required this.originalTitle,

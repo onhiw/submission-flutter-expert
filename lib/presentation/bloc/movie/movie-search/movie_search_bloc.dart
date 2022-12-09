@@ -10,9 +10,7 @@ class MovieSearchBloc extends Bloc<MovieSearchEvent, MovieSearchState> {
   final SearchMovies searchMovies;
 
   MovieSearchBloc(this.searchMovies) : super(MovieSearchInitial()) {
-    on<MovieSearchEvent>((event, emit) {
-      on<GetListSearchMovie>(_fetchMovieSearch);
-    });
+    on<GetListSearchMovie>(_fetchMovieSearch);
   }
 
   Future<void> _fetchMovieSearch(

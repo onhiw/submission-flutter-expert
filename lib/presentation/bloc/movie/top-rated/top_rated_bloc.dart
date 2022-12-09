@@ -10,9 +10,7 @@ class TopRatedBloc extends Bloc<TopRatedEvent, TopRatedState> {
   final GetTopRatedMovies getTopRatedMovies;
 
   TopRatedBloc(this.getTopRatedMovies) : super(TopRatedInitial()) {
-    on<TopRatedEvent>((event, emit) {
-      on<GetListTopRatedMovie>(_fetchTopRatedMovie);
-    });
+    on<GetListTopRatedMovie>(_fetchTopRatedMovie);
   }
 
   Future<void> _fetchTopRatedMovie(

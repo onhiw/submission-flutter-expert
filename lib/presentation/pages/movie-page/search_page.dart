@@ -39,12 +39,14 @@ class SearchPage extends StatelessWidget {
               if (state is MovieSearchLoading) {
                 return Center(child: const CircularProgressIndicator());
               } else if (state is MovieSearchLoaded) {
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    final movie = state.movie[index];
-                    return MovieCard(movie);
-                  },
-                  itemCount: state.movie.length,
+                return Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      final movie = state.movie[index];
+                      return MovieCard(movie);
+                    },
+                    itemCount: state.movie.length,
+                  ),
                 );
               } else if (state is MovieSearchError) {
                 return const Text("Terjadi kesalahaan saat memuat data");
