@@ -6,9 +6,10 @@ import 'package:http/io_client.dart';
 
 class SslPinning extends IOClient {
   Future<SecurityContext> get globalContext async {
-    final sslCert = await rootBundle.load('assets/certificate.cer');
+    final sslCertificate = await rootBundle.load('assets/certificate.cer');
     SecurityContext securityContext = SecurityContext(withTrustedRoots: false);
-    securityContext.setTrustedCertificatesBytes(sslCert.buffer.asInt8List());
+    securityContext
+        .setTrustedCertificatesBytes(sslCertificate.buffer.asInt8List());
     return securityContext;
   }
 
