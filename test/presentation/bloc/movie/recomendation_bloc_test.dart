@@ -24,7 +24,7 @@ void main() {
   final tId = 1;
 
   blocTest<MovieRecomendationBloc, MovieRecomendationState>(
-    'should change movie when data is gotten successfully',
+    'should change movie recomendation when data is gotten successfully',
     build: () {
       when(mockGetMovieRecommendations.execute(tId))
           .thenAnswer((_) async => Right(testMovieList));
