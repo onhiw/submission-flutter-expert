@@ -49,7 +49,21 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchlistMovies.execute());
-      return GetListMovieWatchlist();
+      return GetListMovieWatchlist().props;
+    },
+  );
+
+  blocTest<MovieWatchlistBloc, MovieWatchlistState>(
+    'should change movie when data is gotten initial',
+    build: () {
+      when(mockGetWatchlistMovies.execute()).thenAnswer((_) async => Right([]));
+      return movieWatchlistBloc;
+    },
+    act: (bloc) => bloc.add(GetListMovieWatchlist()),
+    expect: () => [MovieWatchlistLoading(), MovieWatchlistInitial()],
+    verify: (bloc) {
+      verify(mockGetWatchlistMovies.execute());
+      return GetListMovieWatchlist().props;
     },
   );
 
@@ -81,7 +95,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchListStatus.execute(testWatchlistMovie.id));
-      return GetListMovieWatchlistStatus(testWatchlistMovie.id);
+      return GetListMovieWatchlistStatus(testWatchlistMovie.id).props;
     },
   );
 
@@ -98,7 +112,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchListStatus.execute(testWatchlistMovie.id));
-      return GetListMovieWatchlistStatus(testWatchlistMovie.id);
+      return GetListMovieWatchlistStatus(testWatchlistMovie.id).props;
     },
   );
 
@@ -115,7 +129,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSaveWatchlist.execute(testMovieDetail));
-      return MovieWatchlistAdd(testMovieDetail);
+      return MovieWatchlistAdd(testMovieDetail).props;
     },
   );
 
@@ -132,7 +146,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSaveWatchlist.execute(testMovieDetail));
-      return MovieWatchlistAdd(testMovieDetail);
+      return MovieWatchlistAdd(testMovieDetail).props;
     },
   );
 
@@ -149,7 +163,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockRemoveWatchlist.execute(testMovieDetail));
-      return MovieWatchlistRemove(testMovieDetail);
+      return MovieWatchlistRemove(testMovieDetail).props;
     },
   );
 
@@ -166,7 +180,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockRemoveWatchlist.execute(testMovieDetail));
-      return MovieWatchlistRemove(testMovieDetail);
+      return MovieWatchlistRemove(testMovieDetail).props;
     },
   );
 }

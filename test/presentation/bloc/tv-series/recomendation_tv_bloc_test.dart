@@ -38,6 +38,21 @@ void main() {
   );
 
   blocTest<TvRecomendationBloc, TvRecomendationState>(
+    'should change Tv Recomendation when data is gotten initial',
+    build: () {
+      when(mockGetTvRecommendations.execute(tId))
+          .thenAnswer((_) async => Right([]));
+      return tvRecomendationBloc;
+    },
+    act: (bloc) => bloc.add(GetListTvRecomendation(tId)),
+    expect: () => [TvRecomendationLoading(), TvRecomendationInitial()],
+    verify: (bloc) {
+      verify(mockGetTvRecommendations.execute(tId));
+      return GetListTvRecomendation(tId).props;
+    },
+  );
+
+  blocTest<TvRecomendationBloc, TvRecomendationState>(
     'should update error message when request in successful',
     build: () {
       when(mockGetTvRecommendations.execute(tId)).thenAnswer((_) async =>

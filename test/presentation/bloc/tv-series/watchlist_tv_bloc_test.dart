@@ -49,7 +49,21 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchlistTv.execute());
-      return GetListTvWatchlist();
+      return GetListTvWatchlist().props;
+    },
+  );
+
+  blocTest<TvWatchlistBloc, TvWatchlistState>(
+    'should change Tv when data is gotten initial',
+    build: () {
+      when(mockGetWatchlistTv.execute()).thenAnswer((_) async => Right([]));
+      return tvWatchlistBloc;
+    },
+    act: (bloc) => bloc.add(GetListTvWatchlist()),
+    expect: () => [TvWatchlistLoading(), TvWatchlistInitial()],
+    verify: (bloc) {
+      verify(mockGetWatchlistTv.execute());
+      return GetListTvWatchlist().props;
     },
   );
 
@@ -81,7 +95,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchListTvStatus.execute(testWatchListTv.id));
-      return GetListTvWatchlistStatus(testWatchListTv.id!);
+      return GetListTvWatchlistStatus(testWatchListTv.id!).props;
     },
   );
 
@@ -98,7 +112,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetWatchListTvStatus.execute(testWatchListTv.id));
-      return GetListTvWatchlistStatus(testWatchListTv.id!);
+      return GetListTvWatchlistStatus(testWatchListTv.id!).props;
     },
   );
 
@@ -115,7 +129,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSaveWatchlistTv.execute(testTvDetail));
-      return TvWatchlistAdd(testTvDetail);
+      return TvWatchlistAdd(testTvDetail).props;
     },
   );
 
@@ -132,7 +146,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSaveWatchlistTv.execute(testTvDetail));
-      return TvWatchlistAdd(testTvDetail);
+      return TvWatchlistAdd(testTvDetail).props;
     },
   );
 
@@ -149,7 +163,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockRemoveWatchlistTv.execute(testTvDetail));
-      return TvWatchlistRemove(testTvDetail);
+      return TvWatchlistRemove(testTvDetail).props;
     },
   );
 
@@ -166,7 +180,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockRemoveWatchlistTv.execute(testTvDetail));
-      return TvWatchlistRemove(testTvDetail);
+      return TvWatchlistRemove(testTvDetail).props;
     },
   );
 }

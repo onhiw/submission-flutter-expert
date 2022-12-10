@@ -9,7 +9,7 @@ part 'detail_movie_state.dart';
 class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {
   final GetMovieDetail getMovieDetail;
 
-  DetailMovieBloc(this.getMovieDetail) : super(DetailMovieInitial()) {
+  DetailMovieBloc(this.getMovieDetail) : super(DetailMovieLoading()) {
     on<GetSingleDetailMovie>(_fetchDetailMovie);
   }
 

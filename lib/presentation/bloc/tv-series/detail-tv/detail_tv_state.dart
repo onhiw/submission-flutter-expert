@@ -7,13 +7,6 @@ abstract class DetailTvState extends Equatable {
   List<Object> get props => [];
 }
 
-class DetailTvInitial extends DetailTvState {
-  const DetailTvInitial();
-
-  @override
-  List<Object> get props => [];
-}
-
 class DetailTvLoading extends DetailTvState {}
 
 class DetailTvLoaded extends DetailTvState {

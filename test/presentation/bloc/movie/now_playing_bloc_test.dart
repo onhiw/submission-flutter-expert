@@ -31,7 +31,22 @@ void main() {
     expect: () => [NowPlayingLoading(), NowPlayingLoaded(testMovieList)],
     verify: (bloc) {
       verify(mockGetNowPlayingMovies.execute());
-      return GetListNowPlayingMovie();
+      return GetListNowPlayingMovie().props;
+    },
+  );
+
+  blocTest<NowPlayingBloc, NowPlayingState>(
+    'should change movie when data is gotten initial',
+    build: () {
+      when(mockGetNowPlayingMovies.execute())
+          .thenAnswer((_) async => Right([]));
+      return nowPlayingBloc;
+    },
+    act: (bloc) => bloc.add(GetListNowPlayingMovie()),
+    expect: () => [NowPlayingLoading(), NowPlayingInitial()],
+    verify: (bloc) {
+      verify(mockGetNowPlayingMovies.execute());
+      return GetListNowPlayingMovie().props;
     },
   );
 

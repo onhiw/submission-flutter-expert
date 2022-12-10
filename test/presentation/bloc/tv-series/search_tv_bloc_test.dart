@@ -38,6 +38,20 @@ void main() {
   );
 
   blocTest<TvSearchBloc, TvSearchState>(
+    'should change Tv Search when data is gotten initial',
+    build: () {
+      when(mockSearchTv.execute(tQuery)).thenAnswer((_) async => Right([]));
+      return tvSearchBloc;
+    },
+    act: (bloc) => bloc.add(GetListSearchTv(tQuery)),
+    expect: () => [TvSearchLoading(), TvSearchInitial()],
+    verify: (bloc) {
+      verify(mockSearchTv.execute(tQuery));
+      return GetListSearchTv(tQuery).props;
+    },
+  );
+
+  blocTest<TvSearchBloc, TvSearchState>(
     'should update error message when request in successful',
     build: () {
       when(mockSearchTv.execute(tQuery)).thenAnswer((_) async =>

@@ -31,7 +31,21 @@ void main() {
     expect: () => [TopRatedLoading(), TopRatedLoaded(testMovieList)],
     verify: (bloc) {
       verify(mockGetTopRatedMovies.execute());
-      return GetListTopRatedMovie();
+      return GetListTopRatedMovie().props;
+    },
+  );
+
+  blocTest<TopRatedBloc, TopRatedState>(
+    'should change movie when data is gotten initial',
+    build: () {
+      when(mockGetTopRatedMovies.execute()).thenAnswer((_) async => Right([]));
+      return topRatedBloc;
+    },
+    act: (bloc) => bloc.add(GetListTopRatedMovie()),
+    expect: () => [TopRatedLoading(), TopRatedInitial()],
+    verify: (bloc) {
+      verify(mockGetTopRatedMovies.execute());
+      return GetListTopRatedMovie().props;
     },
   );
 

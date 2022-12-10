@@ -31,7 +31,21 @@ void main() {
     expect: () => [NowPlayingTvLoading(), NowPlayingTvLoaded(testTvList)],
     verify: (bloc) {
       verify(mockGetNowPlayingTv.execute());
-      return GetListNowPlayingTv();
+      return GetListNowPlayingTv().props;
+    },
+  );
+
+  blocTest<NowPlayingTvBloc, NowPlayingTvState>(
+    'should change tv when data is gotten initial',
+    build: () {
+      when(mockGetNowPlayingTv.execute()).thenAnswer((_) async => Right([]));
+      return nowPlayingTvBloc;
+    },
+    act: (bloc) => bloc.add(GetListNowPlayingTv()),
+    expect: () => [NowPlayingTvLoading(), NowPlayingTvInitial()],
+    verify: (bloc) {
+      verify(mockGetNowPlayingTv.execute());
+      return GetListNowPlayingTv().props;
     },
   );
 

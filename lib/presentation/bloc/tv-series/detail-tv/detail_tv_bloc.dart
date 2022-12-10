@@ -9,7 +9,7 @@ part 'detail_tv_state.dart';
 class DetailTvBloc extends Bloc<DetailTvEvent, DetailTvState> {
   final GetTvDetail getTvDetail;
 
-  DetailTvBloc(this.getTvDetail) : super(DetailTvInitial()) {
+  DetailTvBloc(this.getTvDetail) : super(DetailTvLoading()) {
     on<GetSingleDetailTv>(_fetchDetailTv);
   }
 

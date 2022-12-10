@@ -31,7 +31,21 @@ void main() {
     expect: () => [TopRatedTvLoading(), TopRatedTvLoaded(testTvList)],
     verify: (bloc) {
       verify(mockGetTopRatedTv.execute());
-      return GetListTopRatedTv();
+      return GetListTopRatedTv().props;
+    },
+  );
+
+  blocTest<TopRatedTvBloc, TopRatedTvState>(
+    'should change Tv when data is gotten initial',
+    build: () {
+      when(mockGetTopRatedTv.execute()).thenAnswer((_) async => Right([]));
+      return topRatedBloc;
+    },
+    act: (bloc) => bloc.add(GetListTopRatedTv()),
+    expect: () => [TopRatedTvLoading(), TopRatedTvInitial()],
+    verify: (bloc) {
+      verify(mockGetTopRatedTv.execute());
+      return GetListTopRatedTv().props;
     },
   );
 

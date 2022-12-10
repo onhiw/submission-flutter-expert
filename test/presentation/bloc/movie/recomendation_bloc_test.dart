@@ -40,6 +40,21 @@ void main() {
   );
 
   blocTest<MovieRecomendationBloc, MovieRecomendationState>(
+    'should change movie recomendation when data is gotten initial',
+    build: () {
+      when(mockGetMovieRecommendations.execute(tId))
+          .thenAnswer((_) async => Right([]));
+      return movieRecomendationBloc;
+    },
+    act: (bloc) => bloc.add(GetListMovieRecomendation(tId)),
+    expect: () => [MovieRecomendationLoading(), MovieRecomendationInitial()],
+    verify: (bloc) {
+      verify(mockGetMovieRecommendations.execute(tId));
+      return GetListMovieRecomendation(tId).props;
+    },
+  );
+
+  blocTest<MovieRecomendationBloc, MovieRecomendationState>(
     'should update error message when request in successful',
     build: () {
       when(mockGetMovieRecommendations.execute(tId)).thenAnswer((_) async =>

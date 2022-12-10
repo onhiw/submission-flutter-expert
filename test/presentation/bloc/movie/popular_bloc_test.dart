@@ -31,7 +31,21 @@ void main() {
     expect: () => [PopularMovieLoading(), PopularMovieLoaded(testMovieList)],
     verify: (bloc) {
       verify(mockGetPopularMovies.execute());
-      return GetListPopularMovie();
+      return GetListPopularMovie().props;
+    },
+  );
+
+  blocTest<PopularMovieBloc, PopularMovieState>(
+    'should change movie when data is gotten initial',
+    build: () {
+      when(mockGetPopularMovies.execute()).thenAnswer((_) async => Right([]));
+      return popularMovieBloc;
+    },
+    act: (bloc) => bloc.add(GetListPopularMovie()),
+    expect: () => [PopularMovieLoading(), PopularMovieInitial()],
+    verify: (bloc) {
+      verify(mockGetPopularMovies.execute());
+      return GetListPopularMovie().props;
     },
   );
 

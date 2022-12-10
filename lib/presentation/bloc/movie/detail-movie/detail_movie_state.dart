@@ -7,13 +7,6 @@ abstract class DetailMovieState extends Equatable {
   List<Object> get props => [];
 }
 
-class DetailMovieInitial extends DetailMovieState {
-  const DetailMovieInitial();
-
-  @override
-  List<Object> get props => [];
-}
-
 class DetailMovieLoading extends DetailMovieState {}
 
 class DetailMovieLoaded extends DetailMovieState {

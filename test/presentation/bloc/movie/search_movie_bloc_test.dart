@@ -38,6 +38,20 @@ void main() {
   );
 
   blocTest<MovieSearchBloc, MovieSearchState>(
+    'should change movie when data is gotten initial',
+    build: () {
+      when(mockSearchMovies.execute(tQuery)).thenAnswer((_) async => Right([]));
+      return movieSearchBloc;
+    },
+    act: (bloc) => bloc.add(GetListSearchMovie(tQuery)),
+    expect: () => [MovieSearchLoading(), MovieSearchInitial()],
+    verify: (bloc) {
+      verify(mockSearchMovies.execute(tQuery));
+      return GetListSearchMovie(tQuery).props;
+    },
+  );
+
+  blocTest<MovieSearchBloc, MovieSearchState>(
     'should update error message when request in successful',
     build: () {
       when(mockSearchMovies.execute(tQuery)).thenAnswer((_) async =>
