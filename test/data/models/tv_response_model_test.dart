@@ -46,7 +46,6 @@ void main() {
         "results": [
           {
             "backdrop_path": "/path.jpg",
-            "first_air_date": "2020-05-05",
             "genre_ids": [1, 2, 3],
             "id": 1,
             "name": "Name",

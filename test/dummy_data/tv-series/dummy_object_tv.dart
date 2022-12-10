@@ -22,7 +22,6 @@ final testTvList = [testTv];
 
 final testTvDetail = TvDetail(
     backdropPath: "/7q448EVOnuE3gVAx24krzO7SNXM.jpg",
-    firstAirDate: "2021-09-03",
     genres: [Genre(id: 10764, name: 'Reality')],
     id: 130392,
     name: "The D'Amelio Show",

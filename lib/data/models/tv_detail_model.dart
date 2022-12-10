@@ -6,7 +6,6 @@ class TvDetailResponse extends Equatable {
   TvDetailResponse({
     required this.adult,
     required this.backdropPath,
-    required this.firstAirDate,
     required this.genres,
     required this.homepage,
     required this.id,
@@ -30,7 +29,6 @@ class TvDetailResponse extends Equatable {
 
   final bool adult;
   final String? backdropPath;
-  final String firstAirDate;
   final List<GenreModel> genres;
   final String homepage;
   final int id;
@@ -55,7 +53,6 @@ class TvDetailResponse extends Equatable {
       TvDetailResponse(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
-        firstAirDate: json["first_air_date"],
         genres: List<GenreModel>.from(
             json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
@@ -81,7 +78,6 @@ class TvDetailResponse extends Equatable {
   Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
-        "first_air_date": firstAirDate,
         "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
@@ -106,7 +102,6 @@ class TvDetailResponse extends Equatable {
   TvDetail toEntity() {
     return TvDetail(
         backdropPath: backdropPath,
-        firstAirDate: firstAirDate,
         genres: this.genres.map((genre) => genre.toEntity()).toList(),
         id: id,
         name: name,
@@ -123,7 +118,6 @@ class TvDetailResponse extends Equatable {
   List<Object?> get props => [
         adult,
         backdropPath,
-        firstAirDate,
         genres,
         homepage,
         id,

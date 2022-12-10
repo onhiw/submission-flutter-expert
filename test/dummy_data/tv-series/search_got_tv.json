@@ -3,7 +3,6 @@
     "results": [
         {
             "backdrop_path": "/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg",
-            "first_air_date": "2011-04-17",
             "genre_ids": [
                 10765,
                 18,
@@ -24,7 +23,6 @@
         },
         {
             "backdrop_path": null,
-            "first_air_date": "2021-04-05",
             "genre_ids": [
                 10767
             ],
@@ -43,7 +41,6 @@
         },
         {
             "backdrop_path": null,
-            "first_air_date": "2020-04-14",
             "genre_ids": [],
             "id": 138757,
             "name": "Autópsia Game Of Thrones",
@@ -58,7 +55,6 @@
         },
         {
             "backdrop_path": "/etj8E2o0Bud0HkONVQPjyCkIvpv.jpg",
-            "first_air_date": "2022-08-21",
             "genre_ids": [
                 10765,
                 18,
