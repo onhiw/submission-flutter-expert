@@ -306,20 +306,20 @@ class MockTvRepository extends _i1.Mock implements _i17.TvRepository {
                           this, Invocation.method(#searchTvSeries, [query]))))
           as _i9.Future<_i2.Either<_i10.Failure, List<_i18.Tv>>>);
   @override
-  _i9.Future<_i2.Either<_i10.Failure, String>> saveWatchlist(
+  _i9.Future<_i2.Either<_i10.Failure, String>> saveWatchlistTv(
           _i19.TvDetail? tv) =>
-      (super.noSuchMethod(Invocation.method(#saveWatchlist, [tv]),
+      (super.noSuchMethod(Invocation.method(#saveWatchlistTv, [tv]),
               returnValue: _i9.Future<_i2.Either<_i10.Failure, String>>.value(
                   _FakeEither_0<_i10.Failure, String>(
-                      this, Invocation.method(#saveWatchlist, [tv]))))
+                      this, Invocation.method(#saveWatchlistTv, [tv]))))
           as _i9.Future<_i2.Either<_i10.Failure, String>>);
   @override
-  _i9.Future<_i2.Either<_i10.Failure, String>> removeWatchlist(
+  _i9.Future<_i2.Either<_i10.Failure, String>> removeWatchlistTv(
           _i19.TvDetail? tv) =>
-      (super.noSuchMethod(Invocation.method(#removeWatchlist, [tv]),
+      (super.noSuchMethod(Invocation.method(#removeWatchlistTv, [tv]),
               returnValue: _i9.Future<_i2.Either<_i10.Failure, String>>.value(
                   _FakeEither_0<_i10.Failure, String>(
-                      this, Invocation.method(#removeWatchlist, [tv]))))
+                      this, Invocation.method(#removeWatchlistTv, [tv]))))
           as _i9.Future<_i2.Either<_i10.Failure, String>>);
   @override
   _i9.Future<bool> isAddedToWatchlist(int? id) =>
