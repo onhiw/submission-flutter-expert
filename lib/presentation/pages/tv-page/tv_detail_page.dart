@@ -117,6 +117,7 @@ class _DetailTvContentState extends State<DetailTvContent> {
                             ),
                             ElevatedButton(
                               onPressed: () async {
+                                String message = "";
                                 if (!widget.isAddedWatchlistTv) {
                                   context
                                       .read<TvWatchlistBloc>()
@@ -129,30 +130,19 @@ class _DetailTvContentState extends State<DetailTvContent> {
                                 final state =
                                     BlocProvider.of<TvWatchlistBloc>(context)
                                         .state;
-                                String message = "";
 
                                 if (state is TvWatchlistIsAdded) {
-                                  final isAdded = state.isAdded;
-                                  message = isAdded == false
+                                  message = state.isAdded == false
                                       ? "Added to Watchlist"
                                       : "Removed from Watchlist";
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(message)));
                                 } else {
                                   message = !widget.isAddedWatchlistTv
                                       ? "Added to Watchlist"
                                       : "Removed from Watchlist";
-                                }
-                                if (message == "Added to Watchlist" ||
-                                    message == "Removed from Watchlist") {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(content: Text(message)));
-                                } else {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          content: Text(message),
-                                        );
-                                      });
                                 }
                                 setState(() {
                                   widget.isAddedWatchlistTv =
