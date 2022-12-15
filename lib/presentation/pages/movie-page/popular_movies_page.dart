@@ -40,7 +40,11 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
                 itemCount: state.movie.length,
               );
             } else if (state is PopularMovieError) {
-              return const Text("Terjadi kesalahaan saat memuat data");
+              return Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(state.message),
+              ));
             } else {
               return Container();
             }

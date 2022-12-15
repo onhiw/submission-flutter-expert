@@ -39,7 +39,11 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
               itemCount: state.movie.length,
             );
           } else if (state is TopRatedError) {
-            return const Text("Terjadi kesalahaan saat memuat data");
+            return Center(
+                child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(state.message),
+            ));
           } else {
             return Container();
           }

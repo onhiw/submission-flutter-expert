@@ -50,7 +50,11 @@ class _TvDetailPageState extends State<TvDetailPage> {
                 isAddedWatchlistTv: isAddedToWatchlistTv),
           );
         } else if (state is DetailTvError) {
-          return const Text("Terjadi kesalahaan saat memuat data");
+          return Center(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(state.message),
+          ));
         } else {
           return Container();
         }
@@ -239,8 +243,11 @@ class _DetailTvContentState extends State<DetailTvContent> {
                                   ),
                                 );
                               } else if (state is TvRecomendationError) {
-                                return const Text(
-                                    "Terjadi kesalahaan saat memuat data");
+                                return Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(state.message),
+                                ));
                               } else {
                                 return Container();
                               }

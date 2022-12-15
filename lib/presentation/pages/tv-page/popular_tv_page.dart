@@ -40,7 +40,11 @@ class _PopularTvPageState extends State<PopularTvPage> {
               itemCount: state.tv.length,
             );
           } else if (state is PopularTvError) {
-            return const Text("Terjadi kesalahaan saat memuat data");
+            return Center(
+                child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(state.message),
+            ));
           } else {
             return Container();
           }

@@ -40,7 +40,11 @@ class _TopRatedTvPageState extends State<TopRatedTvPage> {
               itemCount: state.tv.length,
             );
           } else if (state is TopRatedTvError) {
-            return const Text("Terjadi kesalahaan saat memuat data");
+            return Center(
+                child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(state.message),
+            ));
           } else {
             return Container();
           }

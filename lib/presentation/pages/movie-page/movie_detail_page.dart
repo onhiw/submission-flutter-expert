@@ -53,7 +53,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                 movie: state.movieDetail, isAddedWatchlist: isAddedToWatchlist),
           );
         } else if (state is DetailMovieError) {
-          return const Text("Terjadi kesalahaan saat memuat data");
+          return Center(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(state.message),
+          ));
         } else {
           return Container();
         }
@@ -241,8 +245,11 @@ class _DetailContentState extends State<DetailContent> {
                                   ),
                                 );
                               } else if (state is MovieRecomendationError) {
-                                return const Text(
-                                    "Terjadi kesalahaan saat memuat data");
+                                return Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(state.message),
+                                ));
                               } else {
                                 return Container();
                               }

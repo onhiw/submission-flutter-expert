@@ -102,7 +102,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 } else if (state is NowPlayingLoaded) {
                   return MovieList(state.movie);
                 } else if (state is NowPlayingError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }
@@ -119,7 +123,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 } else if (state is PopularMovieLoaded) {
                   return MovieList(state.movie);
                 } else if (state is PopularMovieError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }
@@ -136,7 +144,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 } else if (state is TopRatedLoaded) {
                   return MovieList(state.movie);
                 } else if (state is TopRatedError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }

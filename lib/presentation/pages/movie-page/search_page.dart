@@ -49,7 +49,11 @@ class SearchPage extends StatelessWidget {
                   ),
                 );
               } else if (state is MovieSearchError) {
-                return const Text("Terjadi kesalahaan saat memuat data");
+                return Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(state.message),
+                ));
               } else {
                 return Container();
               }

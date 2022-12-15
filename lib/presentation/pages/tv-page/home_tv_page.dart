@@ -106,7 +106,11 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 } else if (state is NowPlayingTvLoaded) {
                   return TvList(state.tv);
                 } else if (state is NowPlayingTvError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }
@@ -123,7 +127,11 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 } else if (state is PopularTvLoaded) {
                   return TvList(state.tv);
                 } else if (state is PopularTvError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }
@@ -140,7 +148,11 @@ class _HomeTvPageState extends State<HomeTvPage> {
                 } else if (state is TopRatedTvLoaded) {
                   return TvList(state.tv);
                 } else if (state is TopRatedTvError) {
-                  return const Text("Terjadi kesalahaan saat memuat data");
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(state.message),
+                  ));
                 } else {
                   return Container();
                 }
