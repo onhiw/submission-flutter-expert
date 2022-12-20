@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
+import 'package:core/utils/failure.dart';
 import 'package:ditonton/domain/usecases/movies/search_movies.dart';
 import 'package:ditonton/presentation/bloc/movie/movie-search/movie_search_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';

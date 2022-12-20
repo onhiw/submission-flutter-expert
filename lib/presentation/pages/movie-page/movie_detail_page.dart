@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
+import 'package:core/core.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/presentation/bloc/movie/detail-movie/detail_movie_bloc.dart';
@@ -10,8 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail';
-
   final int id;
   MovieDetailPage({required this.id});
 
@@ -217,7 +215,7 @@ class _DetailContentState extends State<DetailContent> {
                                           onTap: () {
                                             Navigator.pushReplacementNamed(
                                               context,
-                                              MovieDetailPage.ROUTE_NAME,
+                                              detailMovieRoute,
                                               arguments: movie.id,
                                             );
                                           },

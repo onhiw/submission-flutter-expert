@@ -3,17 +3,9 @@ import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/presentation/bloc/tv-series/now-playing-tv/now_playing_tv_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv-series/popular-tv/popular_tv_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv-series/top-rated-tv/top_rated_tv_bloc.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/pages/tv-page/now_playing_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv-page/popular_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv-page/search_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv-page/top_rated_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv-page/tv_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ditonton/common/constants.dart';
+import 'package:core/core.dart';
 
 class HomeTvPage extends StatefulWidget {
   const HomeTvPage({Key? key}) : super(key: key);
@@ -57,19 +49,19 @@ class _HomeTvPageState extends State<HomeTvPage> {
               leading: Icon(Icons.movie),
               title: Text('Movie'),
               onTap: () {
-                Navigator.pushNamed(context, HomeMoviePage.ROUTE_NAME);
+                Navigator.pushNamed(context, homeMovieRoute);
               },
             ),
             ListTile(
               leading: Icon(Icons.save_alt),
               title: Text('Watchlist'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
+                Navigator.pushNamed(context, watchlistMovieRoute);
               },
             ),
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+                Navigator.pushNamed(context, aboutRoute);
               },
               leading: Icon(Icons.info_outline),
               title: Text('About'),
@@ -82,7 +74,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchTvPage.ROUTE_NAME);
+              Navigator.pushNamed(context, searchTvRoute);
             },
             icon: Icon(Icons.search),
           )
@@ -96,8 +88,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
             children: [
               _buildSubHeading(
                 title: 'Now Playing',
-                onTap: () =>
-                    Navigator.pushNamed(context, NowPlayingTvPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, nowPlayingTvRoute),
               ),
               BlocBuilder<NowPlayingTvBloc, NowPlayingTvState>(
                   builder: (context, state) {
@@ -117,8 +108,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
               }),
               _buildSubHeading(
                 title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularTvPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, popularTvRoute),
               ),
               BlocBuilder<PopularTvBloc, PopularTvState>(
                   builder: (context, state) {
@@ -138,8 +128,7 @@ class _HomeTvPageState extends State<HomeTvPage> {
               }),
               _buildSubHeading(
                 title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, topRatedTvRoute),
               ),
               BlocBuilder<TopRatedTvBloc, TopRatedTvState>(
                   builder: (context, state) {
@@ -205,14 +194,14 @@ class TvList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  TvDetailPage.ROUTE_NAME,
+                  detailTvRoute,
                   arguments: tv.id,
                 );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tv.posterPath}',
+                  imageUrl: '$baseImageUrl${tv.posterPath}',
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),

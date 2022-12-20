@@ -1,5 +1,5 @@
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/utils.dart';
+import 'package:core/core.dart';
+import 'package:core/utils/utils.dart';
 import 'package:ditonton/presentation/bloc/movie/movie_watchlist/movie_watchlist_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv-series/tv_watchlist/tv_watchlist_bloc.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist-movie';
-
   @override
   _WatchlistMoviesPageState createState() => _WatchlistMoviesPageState();
 }

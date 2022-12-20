@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
+import 'package:core/core.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:ditonton/presentation/bloc/tv-series/detail-tv/detail_tv_bloc.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class TvDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tv';
   final int id;
   TvDetailPage({required this.id});
 
@@ -215,7 +214,7 @@ class _DetailTvContentState extends State<DetailTvContent> {
                                           onTap: () {
                                             Navigator.pushReplacementNamed(
                                               context,
-                                              TvDetailPage.ROUTE_NAME,
+                                              detailTvRoute,
                                               arguments: tv.id,
                                             );
                                           },

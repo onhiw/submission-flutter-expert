@@ -9,8 +9,8 @@ import 'dart:io' as _i5;
 import 'dart:typed_data' as _i28;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:ditonton/common/failure.dart' as _i10;
-import 'package:ditonton/common/ssl_pinning.dart' as _i26;
+import 'package:core/utils/failure.dart' as _i10;
+import 'package:core/utils/ssl_pinning.dart' as _i26;
 import 'package:ditonton/data/datasources/db/database_helper.dart' as _i24;
 import 'package:ditonton/data/datasources/movie_local_data_source.dart' as _i15;
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart'

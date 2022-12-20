@@ -1,20 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/presentation/bloc/movie/now-playing/now_playing_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie/popular_movie/popular_movie_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie/top-rated/top_rated_bloc.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/movie_detail_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/popular_movies_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/search_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/top_rated_movies_page.dart';
-import 'package:ditonton/presentation/pages/movie-page/watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:core/core.dart';
 
 class HomeMoviePage extends StatefulWidget {
-  static const ROUTE_NAME = '/home-movie';
   @override
   _HomeMoviePageState createState() => _HomeMoviePageState();
 }
@@ -61,12 +54,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: Icon(Icons.save_alt),
               title: Text('Watchlist'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
+                Navigator.pushNamed(context, watchlistMovieRoute);
               },
             ),
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+                Navigator.pushNamed(context, aboutRoute);
               },
               leading: Icon(Icons.info_outline),
               title: Text('About'),
@@ -79,7 +72,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+              Navigator.pushNamed(context, searchMovieRoute);
             },
             icon: Icon(Icons.search),
           )
@@ -113,8 +106,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, popularMovieRoute),
               ),
               BlocBuilder<PopularMovieBloc, PopularMovieState>(
                   builder: (context, state) {
@@ -134,8 +126,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, topRatedMovieRoute),
               ),
               BlocBuilder<TopRatedBloc, TopRatedState>(
                   builder: (context, state) {
@@ -201,14 +192,14 @@ class MovieList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MovieDetailPage.ROUTE_NAME,
+                  detailMovieRoute,
                   arguments: movie.id,
                 );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
+                  imageUrl: '$baseImageUrl${movie.posterPath}',
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),

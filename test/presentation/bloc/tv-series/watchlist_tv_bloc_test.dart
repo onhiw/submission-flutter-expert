@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
+import 'package:core/utils/failure.dart';
 import 'package:ditonton/domain/usecases/tv-series/get_watchlist_tv.dart';
 import 'package:ditonton/domain/usecases/tv-series/get_watchlisttv_status.dart';
 import 'package:ditonton/domain/usecases/tv-series/remove_watchlisttv.dart';
